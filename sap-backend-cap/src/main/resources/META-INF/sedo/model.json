@@ -1,0 +1,215 @@
+{
+  "definitions": {
+    "CatalogService": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "CatalogService.BusinessPartners": {
+      "kind": "entity",
+      "@readonly": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "com.emsi.sapgenai.BusinessPartners"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Name": {
+          "type": "cds.String"
+        },
+        "Email": {
+          "type": "cds.String"
+        },
+        "Region": {
+          "type": "cds.String"
+        },
+        "IBAN": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService.PurchaseOrders": {
+      "kind": "entity",
+      "@readonly": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "com.emsi.sapgenai.PurchaseOrders"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Partner": {
+          "type": "cds.Association",
+          "target": "CatalogService.BusinessPartners",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ]
+            }
+          ]
+        },
+        "OrderDate": {
+          "type": "cds.Date"
+        },
+        "TotalAmount": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 2
+        },
+        "Currency": {
+          "type": "cds.String"
+        },
+        "Status": {
+          "type": "cds.String"
+        },
+        "Description": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService.Invoices": {
+      "kind": "entity",
+      "@readonly": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "com.emsi.sapgenai.Invoices"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Order": {
+          "type": "cds.Association",
+          "target": "CatalogService.PurchaseOrders",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ]
+            }
+          ]
+        },
+        "InvoiceDate": {
+          "type": "cds.Date"
+        },
+        "Amount": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 2
+        },
+        "PaymentStatus": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "com.emsi.sapgenai.BusinessPartners": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Name": {
+          "type": "cds.String"
+        },
+        "Email": {
+          "type": "cds.String"
+        },
+        "Region": {
+          "type": "cds.String"
+        },
+        "IBAN": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "com.emsi.sapgenai.PurchaseOrders": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Partner": {
+          "type": "cds.Association",
+          "target": "com.emsi.sapgenai.BusinessPartners",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ]
+            }
+          ]
+        },
+        "OrderDate": {
+          "type": "cds.Date"
+        },
+        "TotalAmount": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 2
+        },
+        "Currency": {
+          "type": "cds.String"
+        },
+        "Status": {
+          "type": "cds.String"
+        },
+        "Description": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "com.emsi.sapgenai.Invoices": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Order": {
+          "type": "cds.Association",
+          "target": "com.emsi.sapgenai.PurchaseOrders",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ]
+            }
+          ]
+        },
+        "InvoiceDate": {
+          "type": "cds.Date"
+        },
+        "Amount": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 2
+        },
+        "PaymentStatus": {
+          "type": "cds.String"
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v6.6.0",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

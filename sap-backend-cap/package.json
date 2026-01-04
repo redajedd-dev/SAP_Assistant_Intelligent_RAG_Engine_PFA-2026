@@ -1,0 +1,15 @@
+{
+    "name": "sap-backend-cap",
+    "version": "1.0.0",
+    "dependencies": {
+        "@sap/cds": "^7.0.0",
+        "@sap/cds-dk": "^7.0.0"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "h2"
+            }
+        }
+    }
+}

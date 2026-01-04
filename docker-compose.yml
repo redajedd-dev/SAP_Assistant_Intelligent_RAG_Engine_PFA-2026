@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Service 1: SAP CAP Backend (Java)
+  sap-backend:
+    image: maven:3.9-eclipse-temurin-17
+    container_name: sap-backend
+    command: mvn spring-boot:run
+    working_dir: /app
+    volumes:
+      - ./sap-backend-cap:/app
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    networks:
+      - sap-net
+
+  # Service 2: AI Engine (Python)
+  ai-engine:
+    build: ./ai-engine-python
+    container_name: ai-engine
+    ports:
+      - "8000:8000"
+    environment:
+      - SAP_ODATA_URL=http://sap-backend:8080/odata/v4/CatalogService/
+      # GOOGLE_API_KEY is loaded from .env file inside the container or passed here
+    env_file:
+      - ./ai-engine-python/.env
+    depends_on:
+      - sap-backend
+    networks:
+      - sap-net
+
+networks:
+  sap-net:
+    driver: bridge

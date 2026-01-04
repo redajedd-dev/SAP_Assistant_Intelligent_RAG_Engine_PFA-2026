@@ -1,0 +1,3 @@
+ID,Partner_ID,OrderDate,TotalAmount,Currency,Status,Description
+10001,BP001,2025-01-10,150000.00,MAD,Approved,"Achat de 50 PC Dell Latitude pour les ingénieurs. Contact: ahmed@techma.ma."
+10003,BP002,2025-02-15,80000.00,MAD,Rejected,"Installation fibre optique (Budget dépassé). RIB virement: MA640020050000002."
