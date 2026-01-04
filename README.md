@@ -8,6 +8,7 @@ Ce projet est un "Boilerplate" Monorepo combinant un backend SAP CAP (Java) et u
 /sap-genai-assistant
   |-- /sap-backend-cap  # Service OData (Spring Boot + CDS)
   |-- /ai-engine-python # Service IA (FastAPI + LangChain + Gemini)
+  |-- /sap-frontend-react # Service Front-end (React + MUI)
 ```
 
 ## Prérequis
