@@ -26,7 +26,7 @@ Ce projet est un "Boilerplate" Monorepo combinant un backend SAP CAP (Java) et u
 
 Assurez-vous d'avoir votre clé API Google dans `ai-engine-python/.env` :
 ```env
-GOOGLE_API_KEY=votre_clé_ici
+GOOGLE_API_KEY= ":votre_clé_ici gemini API KEY"
 ```
 
 ### 2. Lancement avec Docker Compose (Recommandé)
@@ -66,3 +66,4 @@ uvicorn app.main:app --reload
 2. **Poser une question** :
    GET `http://localhost:8000/api/ask?q=Quelles sont les commandes de TechMa ?`
    L'assistant répondra en utilisant le contexte sécurisé.
+   
